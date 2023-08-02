@@ -1,8 +1,8 @@
 name: Build devcontainer
+
 on:
   push:
-    branches:
-      - main
+    tags: [ "*" ]
 
 jobs:
   build:
@@ -19,10 +19,14 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Get tag name
+        if: startsWith(github.ref, 'refs/tags/')
+        run: echo "TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+
       - name: Pre-build devcontainer image
         uses: devcontainers/ci@v0.3
         with:
           imageName: ghcr.io/${{ github.repository_owner }}/gt-devcontainer
-          imageTag: ${{ github.sha }},latest
+          imageTag: ${{ env.TAG }},${{ github.sha }},latest
           cacheFrom: ghcr.io/${{ github.repository_owner }}/gt-devcontainer
           push: always
