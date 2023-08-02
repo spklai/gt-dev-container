@@ -9,7 +9,9 @@
   "files.trimTrailingWhitespace": true,
   "cSpell.words": [
     "autopep",
+    "Buildx",
     "dbaeumer",
+    "devcontainer",
     "devcontainers",
     "eamodio",
     "errorlens",
