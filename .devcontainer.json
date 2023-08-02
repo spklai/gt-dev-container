@@ -1,5 +1,5 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/base:bookworm",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:18-bookworm",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -20,18 +20,11 @@
     }
   },
   "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {
-      "username": "gt-dev"
-    },
-    "ghcr.io/devcontainers/features/git:1": {},
-    "ghcr.io/devcontainers/features/git-lfs:1": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/node:1": {},
     "ghcr.io/devcontainers/features/python:1": {
       "version": "3.11"
     },
     "ghcr.io/devcontainers-contrib/features/pnpm:2": {},
     "ghcr.io/devcontainers-contrib/features/pdm:2": {}
   },
-  "remoteUser": "gt-dev"
+  "remoteUser": "node"
 }

@@ -4,13 +4,10 @@ GT dev container to be used in local vscode and codespaces. Note that this is a 
 
 ## Environment
 
-Base image: `mcr.microsoft.com/devcontainers/base:bookworm`
+Base image: `mcr.microsoft.com/devcontainers/javascript-node:18-bookworm`
 
-- Common utilities: oh-my-zsh, non-root user(`gt-dev`), etc.
-- Git + LFS
-- GitHub CLI
-- Node.js + PNPM
-- Python + PDM
+- pnpm
+- Python + pdm
 
 ## Definitions
 
