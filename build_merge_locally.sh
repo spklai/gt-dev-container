@@ -4,6 +4,12 @@
 
 set -e
 
+# check if the script is run on a machine with Apple Silicon CPU
+if [[ $(uname -m) != "arm64" ]]; then
+    echo "This script should be only run on a machine with Apple Silicon CPU"
+    exit 1
+fi
+
 docker pull ghcr.io/spklai/gt-devcontainer:latest-amd64
 
 devcontainer build --image-name ghcr.io/spklai/gt-devcontainer:latest-arm64
