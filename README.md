@@ -7,7 +7,6 @@ GT dev container to be used in local vscode and codespaces. Note that this is a 
 Base image: `mcr.microsoft.com/devcontainers/base:bookworm`
 
 - Common utilities: oh-my-zsh, non-root user(`gt-dev`), etc.
-- Docker in docker
 - Git + LFS
 - GitHub CLI
 - Node.js + PNPM
