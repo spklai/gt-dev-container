@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # This script should be only run on a machine with Apple Silicon CPU
 

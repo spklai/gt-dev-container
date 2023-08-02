@@ -14,8 +14,7 @@
         "spmeesseman.vscode-taskexplorer",
         "ms-python.python",
         "ms-python.pylint",
-        "ms-python.autopep8",
-        "spmeesseman.vscode-taskexplorer"
+        "ms-python.autopep8"
       ]
     }
   },
