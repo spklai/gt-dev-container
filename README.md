@@ -7,7 +7,7 @@ GT dev container to be used in local vscode and codespaces. Note that this is a 
 Base image: `mcr.microsoft.com/devcontainers/javascript-node:18-bookworm`
 
 - pnpm
-- Python + pdm
+- pdm
 
 ## Definitions
 
