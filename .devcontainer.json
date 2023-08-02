@@ -20,6 +20,9 @@
     }
   },
   "features": {
+    "ghcr.io/devcontainers-contrib/features/python": {
+      "version": "3.11"
+    },
     "ghcr.io/devcontainers-contrib/features/pnpm:2": {},
     "ghcr.io/devcontainers-contrib/features/pdm:2": {}
   },
