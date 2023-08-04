@@ -11,7 +11,7 @@ if [[ $(uname -m) != "arm64" ]]; then
 fi
 
 # user input version
-read -p "Enter the version of gt-devcontainer to push to: " version
+read -p "Enter the version of gt-devcontainer: " version
 
 # check the version meets the semantic versioning
 if [[ ! $version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
@@ -19,16 +19,33 @@ if [[ ! $version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
     exit 1
 fi
 
-docker pull ghcr.io/spklai/gt-devcontainer:latest-amd64
+# pull the amd64 image
+echo "Pulling the amd64 image..."
+docker pull ghcr.io/spklai/gt-devcontainer:${version}-amd64
 
-devcontainer build --image-name ghcr.io/spklai/gt-devcontainer:latest-arm64
+# build the arm64 image
+echo "Building the arm64 image..."
+devcontainer build --image-name ghcr.io/spklai/gt-devcontainer:${version}-arm64
+# tag the image as latest
+echo "Tagging the arm64 image as latest..."
+docker tag ghcr.io/spklai/gt-devcontainer:${version}-arm64 ghcr.io/spklai/gt-devcontainer:latest-arm64
+
+# push the arm64 images
+echo "Pushing the arm64 images..."
+docker push ghcr.io/spklai/gt-devcontainer:${version}-arm64
 docker push ghcr.io/spklai/gt-devcontainer:latest-arm64
 
-# Merge images by creating manifest
-docker manifest create ghcr.io/spklai/gt-devcontainer:latest --amend ghcr.io/spklai/gt-devcontainer:latest-amd64 --amend ghcr.io/spklai/gt-devcontainer:latest-arm64
+# merge images by creating manifest
+echo "Merging the images..."
+docker manifest create ghcr.io/spklai/gt-devcontainer:${version} --amend ghcr.io/spklai/gt-devcontainer:${version}-amd64 --amend ghcr.io/spklai/gt-devcontainer:${version}-arm64
+# tag the merged image as latest
+echo "Tagging the merged image as latest..."
+docker manifest create ghcr.io/spklai/gt-devcontainer:latest --amend ghcr.io/spklai/gt-devcontainer:${version}-amd64 --amend ghcr.io/spklai/gt-devcontainer:${version}-arm64
 
+# push the merged images
+echo "Pushing the merged images..."
+docker manifest push --purge ghcr.io/spklai/gt-devcontainer:${version}
 docker manifest push --purge ghcr.io/spklai/gt-devcontainer:latest
 
-docker manifest create ghcr.io/spklai/gt-devcontainer:${version} --amend ghcr.io/spklai/gt-devcontainer:latest-amd64 --amend ghcr.io/spklai/gt-devcontainer:latest-arm64
-
-docker manifest push --purge ghcr.io/spklai/gt-devcontainer:${version}
+# Done
+echo "Done."
