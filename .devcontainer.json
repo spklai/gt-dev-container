@@ -24,5 +24,6 @@
     },
     "ghcr.io/devcontainers-contrib/features/pdm:2": {}
   },
-  "remoteUser": "node"
+  "remoteUser": "node",
+  "onCreateCommand": "./on_create_command.sh"
 }
