@@ -10,6 +10,15 @@ if [[ $(uname -m) != "arm64" ]]; then
     exit 1
 fi
 
+# user input version
+read -p "Enter the version of gt-devcontainer to push to: " version
+
+# check the version meets the semantic versioning
+if [[ ! $version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+    echo "The version should meet the semantic versioning"
+    exit 1
+fi
+
 docker pull ghcr.io/spklai/gt-devcontainer:latest-amd64
 
 devcontainer build --image-name ghcr.io/spklai/gt-devcontainer:latest-arm64
@@ -19,3 +28,7 @@ docker push ghcr.io/spklai/gt-devcontainer:latest-arm64
 docker manifest create ghcr.io/spklai/gt-devcontainer:latest --amend ghcr.io/spklai/gt-devcontainer:latest-amd64 --amend ghcr.io/spklai/gt-devcontainer:latest-arm64
 
 docker manifest push --purge ghcr.io/spklai/gt-devcontainer:latest
+
+docker manifest create ghcr.io/spklai/gt-devcontainer:${version} --amend ghcr.io/spklai/gt-devcontainer:latest-amd64 --amend ghcr.io/spklai/gt-devcontainer:latest-arm64
+
+docker manifest push --purge ghcr.io/spklai/gt-devcontainer:${version}

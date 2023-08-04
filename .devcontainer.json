@@ -1,5 +1,10 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:18-bookworm",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "VARIANT": "18-bookworm"
+    }
+  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -24,6 +29,5 @@
     },
     "ghcr.io/devcontainers-contrib/features/pdm:2": {}
   },
-  "remoteUser": "node",
-  "onCreateCommand": "./on_create_command.sh"
+  "remoteUser": "node"
 }
