@@ -19,7 +19,10 @@
         "spmeesseman.vscode-taskexplorer",
         "ms-python.python",
         "ms-python.pylint",
-        "ms-python.autopep8"
+        "vivaxy.vscode-conventional-commits",
+        "GitHub.copilot",
+        "ms-azuretools.vscode-docker",
+        "ms-python.black-formatter"
       ]
     }
   },

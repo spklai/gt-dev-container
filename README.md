@@ -11,6 +11,10 @@ with the latest version of:
 - yarn
 - pdm
 
+other features:
+
+- Git CLI completion
+
 ## Definitions
 
 More detail in the [config file](./.devcontainer.json).
