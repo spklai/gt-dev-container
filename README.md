@@ -9,7 +9,6 @@ Base image: `mcr.microsoft.com/devcontainers/javascript-node:18-bookworm`
 with the latest version of:
 
 - yarn
-- pdm
 
 other features:
 
